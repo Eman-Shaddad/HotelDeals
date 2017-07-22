@@ -40,11 +40,24 @@ h3 {
 	font-size: 2em;
 }
 
-
 .dealInfo {
 	background: #f1fcbf;
 	margin-top: 5px;
 	display: none
+}
+
+button {
+ 
+    background-color: #c4ed74 ;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #cef77e;
 }
 </style>
 
@@ -72,6 +85,7 @@ h3 {
 			language = "French";
 		}
 	%>
+	<button value="Back to Search Page" onclick="window.location.href='FindDeals'"> Back to Search Page</button>
 	<table width=800px>
 		<tr>
 			<td>
