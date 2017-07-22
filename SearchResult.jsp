@@ -7,6 +7,7 @@
 <%@ page import="com.hotelfinder.Deals"%>
 <%@ page import="javax.json.JsonObject"%>
 <%@ page import="javax.json.JsonArray"%>
+<%@ page import="java.net.URLDecoder"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
@@ -22,14 +23,11 @@ table{
 text-align: center;
 }
 
-<<<<<<< HEAD
 .noresult{
 border-radius: 25px;
  	background: #d9f79e;
 }
 
-=======
->>>>>>> 18da51330a9554926edafe13dbfe428b708410be
 .hotelinfo{
 	border-radius: 25px;
  	background: #d9f79e;
@@ -92,7 +90,7 @@ h3 {
 	<%
 		JsonObject offers = deals.getOffers();
 		JsonArray hotels = offers.getJsonArray("Hotel");
-<<<<<<< HEAD
+
 		if(hotels == null){%>
 			<div class="noresult">
 			<h2><%out.print("No matching results found");%></h2>
@@ -103,13 +101,6 @@ h3 {
 				JsonObject hotel = hotels.getJsonObject(i);
 				JsonObject hotelInfo = hotel.getJsonObject("hotelInfo");
 				String hotelName = hotelInfo.getString("hotelName");
-=======
-
-		for (int i = 0; i < hotels.size(); i++) {
-			JsonObject hotel = hotels.getJsonObject(i);
-			JsonObject hotelInfo = hotel.getJsonObject("hotelInfo");
-			String hotelName = hotelInfo.getString("hotelName");
->>>>>>> 18da51330a9554926edafe13dbfe428b708410be
 	%>
 	<br/>
 	
@@ -168,20 +159,20 @@ h3 {
 						<%out.println("For more information: ");%>
 					</td>
 					<td width="650px" style="word-wrap:break-word">
-					<a href="<%out.print(hotel.getJsonObject("hotelUrls").getString("hotelInfositeUrl"));%>">Visit Hotel Page</a>
+					<%
+					String url = (hotel.getJsonObject("hotelUrls").getString("hotelInfositeUrl"));
+					String decodedURL = new URLDecoder().decode(url);
+					%>
+					<a href="<%out.print(decodedURL);%>">Visit Hotel Page</a>
 						 
 					</td>
 					
 				</tr>
 			</table>
 		</div>
-<<<<<<< HEAD
+
 		<%}
 		}%>
-=======
-		<%}%>
->>>>>>> 18da51330a9554926edafe13dbfe428b708410be
-
 	</div>
 </body>
 </html>
